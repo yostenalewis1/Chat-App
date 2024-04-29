@@ -1,23 +1,28 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { socket } from "../socket/socket";
+import { useDispatch } from 'react-redux';
 import pic1 from '../assets/pic1.png';
+import { setName } from '../app/features/userSlice';
 
 const Login = () => {
     const [username, setUsername] = useState('');
-    const navigate = useNavigate(); // Import useNavigate instead of useHistory
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         if (username.trim() === '') {
             alert('Please enter your name');
             return;
         }
-        console.log(username);
-        setUsername('');
-        navigate('/home'); 
+        socket.emit('enterYourName', username);
+        dispatch(setName(username));
+        navigate('/Home');
     };
     
     return (
