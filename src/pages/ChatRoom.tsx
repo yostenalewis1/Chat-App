@@ -1,6 +1,4 @@
 import ChatBox from "../components/ChatBox";
-import Navbar from "../components/Navbar";
-import SendMessages from "../components/SendMessages";
 
  
 interface IProps {
@@ -8,11 +6,9 @@ interface IProps {
 
 const home = ({} : IProps) => {
     return (
-        <>
-        <Navbar />
-        <ChatBox />
-        <SendMessages />
-        </>
+        <div className="w-full h-3/4 bg-violet-600">
+            <ChatBox />
+        </div>
     )
     }
 
