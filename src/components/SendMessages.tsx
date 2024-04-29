@@ -20,7 +20,6 @@ const SendMessages = ({} : IProps) => {
       
     )
     }
-    // <div className=" bg-neutral-50 h-[62px] border-t border-violet-600 fixed bottom-0 w-full py-10 shadow-lg">
 
       
 
