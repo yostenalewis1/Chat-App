@@ -3,8 +3,8 @@ import { Route,Outlet, createBrowserRouter, createRoutesFromElements } from "rea
 import Login from "../pages/Login";
 import Navbar from "../components/Navbar";
 import ChatBox from "../components/ChatBox";
-import SendMessages from "../components/SendMessages";
 import ProtectedRoute from "../components/ProtectedRouter";
+import SideBar from "../components/SideBar";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -13,9 +13,13 @@ const router = createBrowserRouter(
                 <Route path="Home" element={
                     <ProtectedRoute >
                         <div className="flex flex-col max-h-screen h-screen">
-                            <Navbar />
-                            <Outlet />
-                            <SendMessages />
+                            <div className="fixed top-0 w-full z-50">
+                                <Navbar />
+                            </div>
+                            <div className="flex h-full pt-10">
+                                <SideBar />
+                                <Outlet />
+                            </div>
                         </div>
                     </ProtectedRoute>
                 }>
