@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { socket } from "../socket/socket";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
@@ -14,6 +14,7 @@ const SendMessages = () => {
         text: '',
     });
     const {name} = useSelector((state: RootState) => state.user);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -28,13 +29,17 @@ const SendMessages = () => {
         setMessage({
             from: '',
             text: '',
-        })
+        });
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
     }
 
   return (
     <div className="bg-neutral-50  border-t border-violet-600  w-full py-2 shadow-lg">
       <form className="flex" onSubmit={handleSubmit}>
         <input
+            ref={inputRef}
             type="text"
             placeholder="Enter your message..."
             className="placeholder-violet-600 md:pl-20  bg-neutral-50 pl-5 w-full focus:outline-none  rounded-r-none text-lg absloute"
