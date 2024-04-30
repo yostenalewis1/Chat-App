@@ -42,7 +42,7 @@ const SendMessages = () => {
             ref={inputRef}
             type="text"
             placeholder="Enter your message..."
-            className="placeholder-violet-600 md:pl-20  bg-neutral-50 pl-5 w-full focus:outline-none  rounded-r-none text-lg absloute"
+            className="placeholder-violet-600 md:pl-20 text-black bg-neutral-50 pl-5 w-full focus:outline-none  rounded-r-none text-lg absloute"
             value={message.text}
             onChange={(e) => setMessage({ ...message, text: e.target.value })}
         />
