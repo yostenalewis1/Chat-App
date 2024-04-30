@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { socket } from "../socket/socket";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
 interface IProps {}
 
@@ -11,6 +13,7 @@ interface IMessage {
 
 const ChatBox = ({}: IProps) => {
     const [messages, setMessages] = useState<IMessage[]>([]);
+    const {name} = useSelector((state: RootState) => state.user);
 
     useEffect(() => {
         socket.on("newMessage", (message: IMessage) => {
@@ -18,20 +21,24 @@ const ChatBox = ({}: IProps) => {
             console.log(message);
         });
 
-        // return () => {
-        //     socket.off("newMessage");
-        // };
+        return () => {
+            socket.off("newMessage");
+        };
     }, []);
 
   return (
-    <div className="bg-white w-full h-96">
-        <div className="containerWrap">
-            {messages.map((message, index) => (
-            <div key={index} className="bg-violet-600 text-white p-2 m-2 rounded-lg">
-                {message.from}: {message.text}
+    <div className="flex flex-col w-full h-full overflow-y-auto">
+        {messages.map((message, index) => (
+            <div className="flex flex-col w-full" key={index}>
+            <div className={`text-violet-600 text-center font-semibold text-lg ${message.from === name ? 'text-right ml-auto' : 'text-left mr-auto'} px-2 my-1`}>
+                {message.from}
             </div>
-            ))}
-        </div>
+            <div key={index} className={`bg-violet-600 text-white p-2 m-2 rounded-lg ${message.from === name ? 'text-right ml-auto' : 'text-left mr-auto'} max-w-2xl`}>
+                {message.text}
+            </div>
+
+            </div>
+        ))}
     </div>
   );
 };

@@ -1,29 +1,26 @@
 import { Route,Outlet, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
  
 import Login from "../pages/Login";
-import ChatRoom from "../pages/ChatRoom";
 import Navbar from "../components/Navbar";
+import ChatBox from "../components/ChatBox";
 import SendMessages from "../components/SendMessages";
+import ProtectedRoute from "../components/ProtectedRouter";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={
-                <div>
-                    <Outlet />
-                </div>
-            }>
-                <Route index element={<Login />} />
+            <Route path="/" element={<Login />} />
                 <Route path="Home" element={
-                    <div className="w-full bg-white">
-                        <Navbar />
-                        <Outlet />
-                        <SendMessages />
-                    </div>
+                    <ProtectedRoute >
+                        <div className="flex flex-col max-h-screen h-screen">
+                            <Navbar />
+                            <Outlet />
+                            <SendMessages />
+                        </div>
+                    </ProtectedRoute>
                 }>
-                    <Route index element={<ChatRoom />} />
+                    <Route index element={<ChatBox />} />
                 </Route>
-            </Route>
         </>
     )
 );
