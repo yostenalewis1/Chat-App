@@ -36,13 +36,13 @@ const SendMessages = () => {
         <input
             type="text"
             placeholder="Enter your message..."
-            className="placeholder-violet-600 pl-20  w-full focus:outline-none  rounded-r-none text-lg absloute"
+            className="placeholder-violet-600 md:pl-20  bg-neutral-50 pl-5 w-full focus:outline-none  rounded-r-none text-lg absloute"
             value={message.text}
             onChange={(e) => setMessage({ ...message, text: e.target.value })}
         />
         <button
             type="submit"
-            className="bg-violet-600 text-white font-semibold text-lg px-4 py-2 mr-28 rounded-md"
+            className="bg-violet-600 text-white font-semibold text-lg px-4 py-2 md:mr-28 mr-4 rounded-md"
             onClick={handleSubmit}
         >
             Send
