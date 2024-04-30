@@ -27,7 +27,7 @@ const ChatBox = ({}: IProps) => {
     }, []);
 
   return (
-    <div className="flex flex-col w-full h-full overflow-y-auto">
+    <div className="flex flex-col w-full h-full overflow-y-auto bg-white">
         {messages.map((message, index) => (
             <div className="flex flex-col w-full" key={index}>
             <div className={`text-violet-600 text-center font-semibold text-lg ${message.from === name ? 'text-right ml-auto' : 'text-left mr-auto'} px-2 my-1`}>
