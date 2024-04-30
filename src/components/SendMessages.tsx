@@ -31,18 +31,18 @@ const SendMessages = () => {
     }
 
   return (
-    <div className="bg-neutral-50  border-t border-violet-600  w-full py-10 shadow-lg">
-      <form className="containerWrap flex ">
+    <div className="bg-neutral-50  border-t border-violet-600  w-full py-2 shadow-lg">
+      <form className="flex ">
         <input
             type="text"
             placeholder="Enter your message..."
-            className="placeholder-violet-600 input w-full focus:outline-none bg-gray-200  rounded-r-none text-lg"
+            className="placeholder-violet-600 pl-20  w-full focus:outline-none  rounded-r-none text-lg absloute"
             value={message.text}
             onChange={(e) => setMessage({ ...message, text: e.target.value })}
         />
         <button
             type="submit"
-            className="bg-violet-600 text-white font-semibold text-lg px-4 py-2 rounded-l-none"
+            className="bg-violet-600 text-white font-semibold text-lg px-4 py-2 mr-28 rounded-md"
             onClick={handleSubmit}
         >
             Send
