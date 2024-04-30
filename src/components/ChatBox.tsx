@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { socket } from "../socket/socket";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
+import { addMessage } from "../app/features/messagesSlice";
 
 interface IProps {}
 
@@ -12,7 +13,8 @@ interface IMessage {
 }
 
 const ChatBox = ({}: IProps) => {
-    const [messages, setMessages] = useState<IMessage[]>([]);
+    const dispatch = useDispatch();
+    const {messages} = useSelector((state: RootState) => state.messages);
     const {name} = useSelector((state: RootState) => state.user);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -22,8 +24,7 @@ const ChatBox = ({}: IProps) => {
 
     useEffect(() => {
         socket.on("newMessage", (message: IMessage) => {
-            setMessages((prevMessages) => [...prevMessages, message]);
-            console.log(message);
+            dispatch(addMessage(message));
         });
 
         return () => {
