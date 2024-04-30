@@ -32,7 +32,7 @@ const SendMessages = () => {
 
   return (
     <div className="bg-neutral-50  border-t border-violet-600  w-full py-2 shadow-lg">
-      <form className="flex ">
+      <form className="flex">
         <input
             type="text"
             placeholder="Enter your message..."

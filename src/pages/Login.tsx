@@ -33,10 +33,10 @@ const Login = () => {
           <div className="text-center text-violet-600 text-xl font-normal font-serif pt-3">Send and receive massages and enjoy getting in touch </div>
           <img src={pic1} alt="pic1" className="w-[265px] h-64 mt-6 m-auto"/>
 
-              <div className="text-center mt-6 flex flex-col w-[300px] m-auto">
+            <form className="text-center mt-6 flex flex-col w-[300px] m-auto">
                 <input type="text" placeholder="Enter your name" className="border-2 border-violet-600 rounded-lg px-4 py-2 mb-3 w-80" value={username} onChange={handleChange} />
                 <button className="bg-violet-600 text-white font-semibold text-xl px-4 py-2 rounded-lg w-80" type='submit' onClick={handleSubmit}>Join us now</button>
-            </div>
+            </form>
          </div>
         </>
     );
