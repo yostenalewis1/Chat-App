@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { socket } from "../socket/socket";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
+
 interface IMessage {
     from: string;
     text: string;
@@ -14,7 +15,7 @@ const SendMessages = () => {
     });
     const {name} = useSelector((state: RootState) => state.user);
 
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (message.text.trim() === '') {
             return;
@@ -32,7 +33,7 @@ const SendMessages = () => {
 
   return (
     <div className="bg-neutral-50  border-t border-violet-600  w-full py-2 shadow-lg">
-      <form className="flex">
+      <form className="flex" onSubmit={handleSubmit}>
         <input
             type="text"
             placeholder="Enter your message..."
@@ -43,7 +44,6 @@ const SendMessages = () => {
         <button
             type="submit"
             className="bg-violet-600 text-white font-semibold text-lg px-4 py-2 md:mr-28 mr-4 rounded-md"
-            onClick={handleSubmit}
         >
             Send
         </button>
