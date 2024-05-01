@@ -44,7 +44,7 @@ const SideBar = ({}: IProps) => {
     
   return (
     <div className="w-1/4 h-full bg-violet-600 text-neutral-content">
-        <p className="text-lg text-white">Users</p>
+        <p className="text-lg text-white p-2">Active Users</p>
 
         <div className="flex flex-col">
           {users.map((user, index) => (
