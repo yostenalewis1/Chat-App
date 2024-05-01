@@ -26,19 +26,19 @@ const Login = () => {
     };
     
     return (
-        <> 
-         <div className="text-violet-600 text-[32px] font-sans ml-8 mt-2 ">chatapp</div>
+        <div className='bg-neutral-50 w-full h-screen p-3'>
+         <div className="text-violet-600 text-[32px] font-thin">chatapp</div>
           <div className="text-center mt-10 ">
           <span className="text-violet-600 text-2xl font-semibold font-serif ">Welcome to chatapp 💬</span>
           <div className="text-center text-violet-600 text-xl font-normal font-serif pt-3">Send and receive massages and enjoy getting in touch </div>
-          <img src={pic1} alt="pic1" className="w-[265px] h-64 mt-6 m-auto"/>
+          <img src={pic1} alt="pic1" className="h-72 mt-6 m-auto"/>
 
             <form className="text-center mt-6 flex flex-col w-[300px] m-auto">
-                <input type="text" placeholder="Enter your name" className="border-2 border-violet-600 rounded-lg px-4 py-2 mb-3 w-80" value={username} onChange={handleChange} />
-                <button className="bg-violet-600 text-white font-semibold text-xl px-4 py-2 rounded-lg w-80" type='submit' onClick={handleSubmit}>Join us now</button>
+                <input type="text" placeholder="Enter your name" className="bg-neutral-50 border-2 border-violet-600 rounded-3xl px-4 py-2 mb-3 w-80" value={username} onChange={handleChange} />
+                <button className="bg-violet-600 text-white font-semibold text-xl px-4 py-2 rounded-3xl w-80" type='submit' onClick={handleSubmit}>Join us now</button>
             </form>
          </div>
-        </>
+        </div>
     );
 }
 
